@@ -38,8 +38,16 @@ export default function Hero() {
       const playPromise = videoRef.current.play();
       
       if (playPromise !== undefined) {
-        playPromise.catch((err) => {
-          console.log("Browser blocked unmuted autoplay. User interaction required to play.", err);
+        playPromise.catch(() => {
+          // If browser blocks unmuted autoplay (common on mobile iOS/Android),
+          // fallback to playing it muted so the video at least runs.
+          if (videoRef.current) {
+            videoRef.current.muted = true;
+            setMuted(true);
+            videoRef.current.play().catch((err) => {
+              console.log("Autoplay entirely blocked.", err);
+            });
+          }
         });
       }
     }
