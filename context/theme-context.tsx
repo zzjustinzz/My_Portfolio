@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
+import { flushSync } from "react-dom";
 
 type Theme = "dark" | "light";
 
@@ -15,7 +16,16 @@ const ThemeContext = createContext<ThemeContextType>({
 });
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("dark");
+  const [theme, setTheme] = useState<Theme>("light");
+
+  useEffect(() => {
+    const savedTheme = window.localStorage.getItem("portfolio-theme") as Theme | null;
+    if (savedTheme === "dark" || savedTheme === "light") {
+      setTheme(savedTheme);
+    } else {
+      setTheme(window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    }
+  }, []);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -24,10 +34,17 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     } else {
       root.classList.remove("dark");
     }
+    window.localStorage.setItem("portfolio-theme", theme);
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+    const apply = () => setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+    const doc = document as Document & { startViewTransition?: (callback: () => void) => void };
+    if (doc.startViewTransition) {
+      doc.startViewTransition(() => flushSync(apply));
+    } else {
+      apply();
+    }
   };
 
   return (

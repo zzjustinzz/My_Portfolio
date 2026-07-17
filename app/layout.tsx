@@ -1,55 +1,55 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/context/theme-context";
 import Header from "../components/header";
+import Footer from "../components/footer";
 import { Toaster } from "react-hot-toast";
+import { MotionConfig } from "framer-motion";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
+const themeInitScript = `try{var t=localStorage.getItem("portfolio-theme");if(t!=="dark"&&t!=="light"){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}if(t==="dark"){document.documentElement.classList.add("dark")}}catch(e){}`;
+
+const geist = localFont({
+  src: "./fonts/GeistVF.woff",
+  variable: "--font-geist",
+  display: "swap",
+});
+
+const geistMono = localFont({
+  src: "./fonts/GeistMonoVF.woff",
+  variable: "--font-geist-mono",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://kishan-kushwaha.vercel.app"),
-  title: "Kishan Kushwaha | Generative AI & Agentic AI Engineer",
+  title: "Thanh Trần | Product Owner & Product Manager",
   description:
-    "Gen AI Engineer specializing in RAG pipelines, multi-agent systems, and production LLM applications. View my projects: Medico, BrandGuardian AI, AgentFlow.",
+    "Product Owner at FPT IS leading urban mobility, digital payment, smart city, and enterprise platforms in Ho Chi Minh City.",
   keywords: [
-    "Generative AI Engineer",
-    "Agentic AI",
-    "RAG pipelines",
-    "LangGraph",
-    "LangChain",
-    "Multi-agent systems",
-    "LLM applications",
-    "Kishan Kushwaha",
+    "Product Owner",
+    "Product Manager",
+    "Product Management",
+    "Scrum",
+    "Smart City",
+    "Urban Mobility",
+    "Digital Payments",
+    "Thanh Tran",
   ],
-  authors: [{ name: "Kishan Kushwaha", url: "https://github.com/krishcode11" }],
-  creator: "Kishan Kushwaha",
+  authors: [{ name: "Thanh Trần", url: "https://www.linkedin.com/in/thanh-tr%E1%BA%A7n-5815a0112/" }],
+  creator: "Thanh Trần",
   openGraph: {
     type: "website",
     locale: "en_US",
-    title: "Kishan Kushwaha | Generative AI & Agentic AI Engineer",
+    title: "Thanh Trần | Product Owner & Product Manager",
     description:
-      "Gen AI Engineer specializing in RAG pipelines, multi-agent systems, and production LLM applications.",
-    siteName: "Kishan Kushwaha Portfolio",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Kishan Kushwaha — Generative AI & Agentic AI Engineer",
-      },
-    ],
+      "Product Owner at FPT IS building impactful digital products for urban mobility, payments, and enterprise clients.",
+    siteName: "Thanh Trần Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kishan Kushwaha | Generative AI & Agentic AI Engineer",
+    title: "Thanh Trần | Product Owner & Product Manager",
     description:
-      "Gen AI Engineer specializing in RAG pipelines, multi-agent systems, and production LLM applications.",
-    images: ["/og-image.png"],
+      "Product Owner at FPT IS building impactful digital products for urban mobility, payments, and enterprise clients.",
   },
   robots: {
     index: true,
@@ -63,23 +63,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
-      <body className={`${inter.variable} antialiased bg-[var(--background)] text-[var(--foreground)]`}>
-        <ThemeProvider>
-          <Header />
-          <main>{children}</main>
-          <Toaster
-            position="bottom-right"
-            toastOptions={{
-              style: {
-                background: "#1a1a2e",
-                color: "#f0f0ff",
-                border: "1px solid rgba(79,70,229,0.3)",
-                borderRadius: "12px",
-              },
-            }}
-          />
-        </ThemeProvider>
+    <html lang="en" className={`${geist.variable} ${geistMono.variable}`} suppressHydrationWarning>
+      <body>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <MotionConfig reducedMotion="user">
+          <ThemeProvider>
+            <Header />
+            <main>{children}</main>
+            <Footer />
+            <Toaster
+              position="bottom-right"
+              toastOptions={{
+                className: "portfolio-toast",
+              }}
+            />
+          </ThemeProvider>
+        </MotionConfig>
       </body>
     </html>
   );

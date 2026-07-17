@@ -35,7 +35,7 @@ export async function sendEmail(data: ContactFormData): Promise<ActionResult> {
       },
       body: JSON.stringify({
         from: "Portfolio Contact <onboarding@resend.dev>",
-        to: ["aiautomationforme@gmail.com"],
+        to: ["thanhtdfu@gmail.com"],
         reply_to: email,
         subject: `Portfolio message from ${name}`,
         html: `

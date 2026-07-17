@@ -1,7 +1,7 @@
 export const navLinks = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
+  { label: "Products", href: "#projects" },
   { label: "Skills", href: "#skills" },
   { label: "Experience", href: "#experience" },
   { label: "Contact", href: "#contact" },
@@ -14,57 +14,36 @@ export interface Project {
   description: string;
   metrics: string[];
   tags: string[];
-  githubUrl: string;
   liveUrl?: string;
 }
 
 export const projectsData: Project[] = [
   {
-    title: "Medico — AI Medical Assistant Chatbot",
-    role: "Gen AI Engineer",
-    dateRange: "Jun 2026 – Jul 2026",
+    title: "Urban Mobility Platforms — TTGT, GoBus & HCMC Metro",
+    role: "Product Owner",
+    dateRange: "2019 – Present",
     description:
-      "Production RAG assistant that ingests 100+ page medical PDFs and answers questions grounded strictly in retrieved evidence. Built end-to-end with a FastAPI backend, Pinecone vector store, and Streamlit UI — containerized with Docker and deployed on Render.",
-    metrics: [
-      "1,000+ indexed chunks",
-      "~40% better retrieval accuracy",
-      "~60% fewer hallucinations",
-      "<3s response time",
-    ],
-    tags: ["LangChain", "FastAPI", "Pinecone", "Groq", "Streamlit", "Docker", "Render"],
-    githubUrl: "https://github.com/krishcode11",
-    liveUrl: "https://medico-docker-version-1.onrender.com/",
+      "Owned the discovery, delivery, and continuous improvement of digital platforms serving urban transportation in Ho Chi Minh City. Worked closely with public-sector stakeholders, user research teams, engineers, and delivery partners.",
+    metrics: ["End-to-end product ownership", "Public-sector stakeholders", "Cross-functional delivery"],
+    tags: ["Product Strategy", "Product Discovery", "Scrum", "User Research", "Smart City"],
   },
   {
-    title: "BrandGuardian AI — Multimodal LLMOps Compliance Platform",
-    role: "Gen AI Engineer",
-    dateRange: "Jun 2026 – Jul 2026",
+    title: "Integrated Digital Payments",
+    role: "Product Owner",
+    dateRange: "2019 – Present",
     description:
-      "Multimodal compliance auditing platform combining transcript analysis, OCR, and semantic retrieval across a 6-stage LangGraph workflow. Integrates Azure Video Indexer and Azure AI Search with full OpenTelemetry tracing for production observability.",
-    metrics: [
-      "1,000+ policy chunks indexed",
-      "<3 min report generation",
-      "6+ orchestrated workflow stages",
-      "Full OpenTelemetry tracing",
-    ],
-    tags: ["Azure OpenAI", "Azure AI Search", "Azure Video Indexer", "LangGraph", "FastAPI", "OpenTelemetry"],
-    githubUrl: "https://github.com/krishcode11",
-    liveUrl: "https://github.com/krishcode11/LLMOPS-Project",
+      "Led cross-functional initiatives integrating payment gateways and financial partners into digital services, coordinating product requirements across business, technology, and external partner teams.",
+    metrics: ["7 major payment partners", "Multi-party coordination", "Platform integration"],
+    tags: ["MoMo", "ZaloPay", "ShopeePay", "Vietcombank", "VISA", "Mastercard"],
   },
   {
-    title: "AgentFlow — Multi-Agent Research Assistant",
-    role: "Agentic AI Engineer",
-    dateRange: "May 2026 – Jun 2026",
+    title: "Enterprise Platforms for AJINOMOTO",
+    role: "Product Manager",
+    dateRange: "FPT IS",
     description:
-      "4-agent research system that autonomously researches, analyzes, writes, and self-critiques reports using graph-based execution. Powered by Gemini 2.5 Flash Lite and Tavily search, generating comprehensive reports in under 2 minutes.",
-    metrics: [
-      "50+ sources per run",
-      "<2 min report generation",
-      "80%+ less manual research time",
-    ],
-    tags: ["LangGraph", "LangChain", "Gemini 2.5 Flash Lite", "Tavily", "Streamlit"],
-    githubUrl: "https://github.com/krishcode11",
-    liveUrl: "https://multi-agent-ai-research-system.streamlit.app/",
+      "Managed enterprise platform initiatives tailored to large-scale client needs, translating business requirements into product direction while ensuring alignment with operational needs and industry standards.",
+    metrics: ["Enterprise product management", "Business alignment", "Stakeholder leadership"],
+    tags: ["B2B", "Enterprise Platforms", "Requirements", "Roadmapping", "Delivery"],
   },
 ];
 
@@ -74,34 +53,12 @@ export interface SkillGroup {
 }
 
 export const skillsData: SkillGroup[] = [
-  {
-    category: "Languages",
-    skills: ["Python", "SQL"],
-  },
-  {
-    category: "LLMs & Generative AI",
-    skills: ["Gemini API", "OpenAI SDK", "Groq API", "Prompt Engineering", "Function Calling"],
-  },
-  {
-    category: "Agentic AI",
-    skills: ["LangGraph", "Multi-Agent Systems", "ReAct Pattern", "Tool Calling", "Agent Orchestration"],
-  },
-  {
-    category: "RAG & Search",
-    skills: ["RAG Architecture", "Semantic Search", "Embeddings", "Vector Search", "Chunking"],
-  },
-  {
-    category: "Frameworks",
-    skills: ["LangChain", "FastAPI", "Streamlit"],
-  },
-  {
-    category: "Databases",
-    skills: ["Pinecone", "Azure AI Search"],
-  },
-  {
-    category: "Infra & Tools",
-    skills: ["Docker", "Git", "GitHub", "Render", "Azure"],
-  },
+  { category: "Product Management", skills: ["Product Strategy", "Product Discovery", "Roadmapping", "Product Lifecycle", "Requirements Management"] },
+  { category: "Leadership & Delivery", skills: ["Product Leadership", "Cross-functional Leadership", "Stakeholder Management", "Agile Delivery", "Scrum"] },
+  { category: "Domain Expertise", skills: ["Smart City", "Urban Mobility", "Digital Payments", "Enterprise Platforms", "Public Sector"] },
+  { category: "Engineering", skills: ["Node.js", "ReactJS", "AngularJS", "Vue.js", "Java", "REST APIs"] },
+  { category: "Cloud & Integrations", skills: ["AWS", "Azure Bot", "Firebase", "Google APIs", "Payment Gateways", "Serverless"] },
+  { category: "Quality & Ways of Working", skills: ["User Research", "Manual Testing", "Test Planning", "Defect Tracking", "Clean Architecture"] },
 ];
 
 export interface Experience {
@@ -115,33 +72,39 @@ export interface Experience {
 
 export const experienceData: Experience[] = [
   {
-    title: "Self-Directed AI Engineering Path",
-    subtitle: "Independent",
-    period: "2024 – Present",
-    description:
-      "Transitioned into Generative AI and Agentic AI engineering through intensive self-study and shipping production projects. Built complete end-to-end systems covering RAG pipelines, multi-agent orchestration, vector search, and cloud deployment.",
-    highlights: ["Medico — AI Medical Assistant Chatbot", "BrandGuardian AI — LLMOps Compliance Platform", "AgentFlow — Multi-Agent Research Assistant"],
+    title: "Product Owner",
+    subtitle: "FPT IS · Ho Chi Minh City",
+    period: "Apr 2019 – Present",
+    description: "Leading digital products for urban mobility, public-sector services, payments, and enterprise clients from discovery through delivery.",
+    highlights: ["Owned TTGT, GoBus, and HCMC Metro product initiatives.", "Coordinated integrations with MoMo, ZaloPay, ShopeePay, Vietcombank, VISA, and Mastercard.", "Managed enterprise platform initiatives for AJINOMOTO."],
+    techStack: ["Product Management", "Scrum", "User Research", "Stakeholder Management"],
   },
   {
-    title: "Analyst",
-    subtitle: "Business & Data Operations (Delhi NCR)",
-    period: "2021 – 2022",
-    description:
-      "Drove data-backed decision-making by architecting analytical reporting workflows, managing cross-functional stakeholder requirements, and transforming raw operational data into actionable business intelligence.",
-    highlights: [
-      "Engineered automated MIS reporting dashboards, aggregating complex datasets to deliver high-level business intelligence to management and stakeholders.",
-      "Conducted extensive data cleaning, validation, and transformation processes, ensuring high data integrity for critical operational metrics.",
-      "Collaborated cross-functionally with clients and internal teams to gather and translate business requirements into technical reporting deliverables.",
-      "Optimized existing reporting workflows, improving process efficiency and establishing robust systems for tracking key performance indicators (KPIs).",
-      "Leveraged advanced analytical functions (VLOOKUP, XLOOKUP, Power Query) to synthesize large datasets and surface actionable business insights."
-    ],
-    techStack: ["Data Analysis", "SQL", "Power Query", "Excel", "MIS Reporting", "Business Analysis"],
+    title: "Senior Software Engineer",
+    subtitle: "transcosmos technology Vietnam",
+    period: "Oct 2017 – Mar 2019",
+    description: "Developed intelligent chatbot and automation systems for internal operations and customer support, collaborating across teams to deliver scalable services.",
+    techStack: ["Node.js", "AngularJS", "ReactJS", "AWS Lambda", "Azure Bot", "Google APIs"],
   },
   {
-    title: "Guru Gobind Singh Indraprastha University",
-    subtitle: "Healthcare Technology & Image Processing",
-    period: "2022 – 2024",
-    description:
-      "Coursework in healthcare technology and image processing before transitioning to software and AI engineering.",
+    title: "Full Stack Engineer",
+    subtitle: "Originally US · PTSC M&C · Freelance · FPT Corporation",
+    period: "Jul 2014 – Sep 2017",
+    description: "Built full-stack, real-time, and internal business applications across smart homes, food delivery, kiosks, urban traffic, ticketing, and production management.",
+    highlights: ["Delivered traffic and ticketing monitoring platforms for Ho Chi Minh City and Vietnam Railways.", "Built real-time dashboards and visualizations with the MEAN stack and d3.js.", "Integrated Firebase, OneSignal, and Google Maps APIs."],
+    techStack: ["Node.js", "AngularJS", "Vue.js", "Firebase", "d3.js", "Google Maps API"],
+  },
+  {
+    title: "Quality Control & Software Engineering",
+    subtitle: "GNT VN · FPT Software",
+    period: "Jan 2012 – Jul 2014",
+    description: "Started in software quality and Java development, executing test plans for mobile and web applications and building an educational dictionary application.",
+    techStack: ["Manual Testing", "Scrum", "Java", "AJAX", "Android"],
+  },
+  {
+    title: "Bachelor of Engineering — Computer Software Engineering",
+    subtitle: "FPT University",
+    period: "2009 – 2012",
+    description: "Engineering education in computer software at FPT University.",
   },
 ];

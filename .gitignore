@@ -36,3 +36,10 @@ yarn-error.log*
 next-env.d.ts
 hero-video-update-prompt.md
 hero-section.md
+
+# local tooling
+/tmp/
+/.hallmark/
+/.agents/
+/.codex/
+skills-lock.json

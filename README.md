@@ -1,6 +1,6 @@
-# Kishan Kushwaha — AI Engineer Portfolio
+# Thanh Trần — Product Owner Portfolio
 
-A production-grade personal portfolio for **Kishan Kushwaha**, Generative AI & Agentic AI Engineer.
+A personal portfolio for **Thanh Trần**, Product Owner and Product Manager at FPT IS.
 
 **Stack:** Next.js 14 · TypeScript · Tailwind CSS · Framer Motion · Groq · Resend
 
