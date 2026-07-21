@@ -91,7 +91,7 @@ export default function Chatbot() {
                 }}
                 aria-label="Dismiss assistant hint"
               ><RiCloseLine aria-hidden="true" /></button>
-              <p>Ask Limo about Thanh’s product work.</p>
+              <p>Ask Navi about Thanh’s product work.</p>
             </motion.div>
           )}
         </AnimatePresence>
@@ -115,7 +115,7 @@ export default function Chatbot() {
             <header className="chat-head">
               <div className="chat-head-main">
                 <RiRobot2Line aria-hidden="true" />
-                <div><p>Limo · Portfolio assistant</p><p>Answers from Thanh’s portfolio</p></div>
+                <div><p>Navi · Portfolio assistant</p><p>Answers from Thanh’s portfolio</p></div>
               </div>
               <div className="chat-head-links">
                 <a href="https://www.linkedin.com/in/thanh-tr%E1%BA%A7n-5815a0112/" target="_blank" rel="noopener noreferrer" aria-label="Open Thanh’s LinkedIn"><RiLinkedinBoxFill aria-hidden="true" /></a>
@@ -173,7 +173,14 @@ export default function Chatbot() {
               </button>
             </div>
 
-            <footer className="chat-foot"><span>Connect with Thanh</span><span>LinkedIn · Email</span></footer>
+            <footer className="chat-foot">
+              <span>Connect with Thanh</span>
+              <span className="chat-foot-links">
+                <a href="https://www.linkedin.com/in/thanh-tr%E1%BA%A7n-5815a0112/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <span aria-hidden="true">·</span>
+                <a href="mailto:thanhtdfu@gmail.com">Email</a>
+              </span>
+            </footer>
           </motion.section>
         )}
       </AnimatePresence>

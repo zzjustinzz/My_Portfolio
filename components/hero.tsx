@@ -13,13 +13,13 @@ export default function Hero() {
       <div className="hero-grid page-shell">
         <div className="hero-copy">
           <p className="hero-status">
-            Product Owner · FPT IS · Ho Chi Minh City
+            Product Manager · Deputy Head of Metro Solutions · FPT IS
           </p>
           <h1>
-            Products that move <span>cities forward.</span>
+            Products that move <span>cities and businesses forward.</span>
           </h1>
           <p className="hero-lede">
-            I&apos;m Thanh Trần, a Product Owner with an engineering foundation. I lead cross-functional teams across urban mobility, digital payments, and enterprise platforms—from discovery through delivery.
+            I&apos;m Thanh Trần, a product and technology leader with 14+ years in software and 7+ years as a Product Owner, Product Manager, and Project Manager. I lead cross-functional Agile teams across smart mobility, payments, and enterprise platforms—from discovery through delivery.
           </p>
           <div className="hero-actions">
             <a id="cta-view-projects" className="btn btn--primary" href="#projects" onClick={scrollToProjects}>
@@ -64,7 +64,7 @@ export default function Hero() {
 
             <rect className="map-node" x="20" y="248" width="140" height="66" rx="8" />
             <text className="map-label" x="90" y="278" textAnchor="middle">PAYMENTS</text>
-            <text className="map-sub" x="90" y="296" textAnchor="middle">7 MAJOR PARTNERS</text>
+            <text className="map-sub" x="90" y="296" textAnchor="middle">6+ MAJOR PARTNERS</text>
 
             <rect className="map-node" x="398" y="248" width="154" height="66" rx="8" />
             <text className="map-label" x="475" y="278" textAnchor="middle">DELIVERY TEAMS</text>

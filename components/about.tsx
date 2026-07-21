@@ -21,8 +21,8 @@ export default function About() {
 
         <div className="about-copy">
           <div className="prose">
-            <p>I&apos;m a <strong>Product Owner and Project Manager at FPT IS</strong> with a background spanning quality assurance, full-stack engineering, and product leadership.</p>
-            <p>I lead cross-functional teams to build user-centered digital products for <strong>urban mobility, smart city services, digital payments, and enterprise clients</strong>. My work includes TTGT, GoBus, HCMC Metro, and enterprise platforms for AJINOMOTO.</p>
+            <p>I&apos;m a <strong>Product Manager, Product Owner, and Deputy Head of Metro Solutions at FPT IS</strong>, with 14+ years in software and 7+ years leading products — a background spanning quality assurance, full-stack engineering, and product leadership.</p>
+            <p>I lead cross-functional Agile teams to build user-centered digital products for <strong>smart mobility, digital payments, enterprise platforms, and public-sector ecosystems</strong>. My work includes TTGT, Go!Bus, HCMC Metro (FPT.Maas), AJINOMOTO&apos;s Voice of Customer platform, and Smart Township for NOVA Group and Mapletree.</p>
             <p>Because I started my career in testing and software engineering, I connect product direction with technical reality and work comfortably from discovery through delivery.</p>
             <p><strong>Building products with lasting impact.</strong> I&apos;m passionate about simplifying complex ecosystems and creating digital experiences that scale for users, organizations, and cities.</p>
           </div>
@@ -37,7 +37,7 @@ export default function About() {
           </div>
 
           <div className="tag-list" aria-label="Core working knowledge">
-            {["Product Management", "Scrum", "Smart City", "Digital Payments", "Node.js", "ReactJS"].map((item) => <span className="tag" key={item}>{item}</span>)}
+            {["Product Management", "Scrum", "Smart City", "Digital Payments", "Roadmapping", "Stakeholder Management"].map((item) => <span className="tag" key={item}>{item}</span>)}
           </div>
         </div>
       </div>

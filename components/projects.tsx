@@ -11,7 +11,7 @@ export default function Projects() {
         <header className="project-stack-intro">
           <div className="accent-line" aria-hidden="true" />
           <h2 className="section-title">Product work in operating context.</h2>
-          <p className="section-lede">Urban mobility, integrated payments, public services, and enterprise operations—shown as systems, stakeholders, and delivery outcomes.</p>
+          <p className="section-lede">Smart mobility, Metro payments, public services, and enterprise platforms—shown as systems, stakeholders, and delivery outcomes.</p>
           <a className="project-link" id="projects-linkedin" href="https://www.linkedin.com/in/thanh-tr%E1%BA%A7n-5815a0112/" target="_blank" rel="noopener noreferrer">
             Full profile <RiArrowRightUpLine aria-hidden="true" />
           </a>

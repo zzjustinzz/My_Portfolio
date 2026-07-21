@@ -21,10 +21,15 @@ const geistMono = localFont({
   display: "swap",
 });
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+
 export const metadata: Metadata = {
-  title: "Thanh Trần | Product Owner & Product Manager",
+  metadataBase: new URL(siteUrl),
+  title: "Thanh Trần | Product Manager & Product Owner",
   description:
-    "Product Owner at FPT IS leading urban mobility, digital payment, smart city, and enterprise platforms in Ho Chi Minh City.",
+    "Product Manager and Deputy Head of Metro Solutions at FPT IS with 14+ years in software, leading smart mobility, digital payment, and enterprise platforms in Ho Chi Minh City.",
   keywords: [
     "Product Owner",
     "Product Manager",
@@ -40,16 +45,26 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    title: "Thanh Trần | Product Owner & Product Manager",
+    url: siteUrl,
+    title: "Thanh Trần | Product Manager & Product Owner",
     description:
-      "Product Owner at FPT IS building impactful digital products for urban mobility, payments, and enterprise clients.",
+      "Product Manager at FPT IS building impactful digital products for smart mobility, payments, and enterprise clients.",
     siteName: "Thanh Trần Portfolio",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Thanh Trần — Product Manager & Product Owner at FPT IS",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Thanh Trần | Product Owner & Product Manager",
+    title: "Thanh Trần | Product Manager & Product Owner",
     description:
-      "Product Owner at FPT IS building impactful digital products for urban mobility, payments, and enterprise clients.",
+      "Product Manager at FPT IS building impactful digital products for smart mobility, payments, and enterprise clients.",
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
