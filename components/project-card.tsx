@@ -1,6 +1,6 @@
 "use client";
 
-import { RiArrowRightUpLine } from "react-icons/ri";
+import { RiAppleFill, RiArrowRightUpLine, RiGooglePlayFill } from "react-icons/ri";
 import type { Project } from "@/lib/data";
 
 export default function ProjectCard({ project, index }: { project: Project; index: number }) {
@@ -16,10 +16,24 @@ export default function ProjectCard({ project, index }: { project: Project; inde
         {project.metrics.map((metric) => <div className="project-fact" key={metric}>{metric}</div>)}
       </div>
       <div className="project-tags">{project.tags.map((tag) => <span className="tag" key={tag}>{tag}</span>)}</div>
-      {project.liveUrl && (
-        <a className="project-link" id={`project-live-${index}`} href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-          View product <RiArrowRightUpLine aria-hidden="true" />
-        </a>
+      {(project.liveUrl || project.appStoreUrl || project.playStoreUrl) && (
+        <div className="project-links">
+          {project.liveUrl && (
+            <a className="project-link" id={`project-live-${index}`} href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+              View product <RiArrowRightUpLine aria-hidden="true" />
+            </a>
+          )}
+          {project.appStoreUrl && (
+            <a className="project-store" id={`project-appstore-${index}`} href={project.appStoreUrl} target="_blank" rel="noopener noreferrer">
+              <RiAppleFill aria-hidden="true" /> App Store
+            </a>
+          )}
+          {project.playStoreUrl && (
+            <a className="project-store" id={`project-playstore-${index}`} href={project.playStoreUrl} target="_blank" rel="noopener noreferrer">
+              <RiGooglePlayFill aria-hidden="true" /> Google Play
+            </a>
+          )}
+        </div>
       )}
     </article>
   );

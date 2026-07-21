@@ -10,35 +10,45 @@ interface ThemeContextType {
   toggleTheme: () => void;
 }
 
+const STORAGE_KEY = "portfolio-theme-preference";
+
 const ThemeContext = createContext<ThemeContextType>({
   theme: "dark",
   toggleTheme: () => {},
 });
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setTheme] = useState<Theme>("dark");
 
+  // Sync React state to whatever the inline script already resolved (system preference
+  // when the user hasn't made an explicit choice). Avoids the light-default flash.
   useEffect(() => {
-    const savedTheme = window.localStorage.getItem("portfolio-theme") as Theme | null;
-    if (savedTheme === "dark" || savedTheme === "light") {
-      setTheme(savedTheme);
-    } else {
-      setTheme(window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-    }
+    setTheme(document.documentElement.classList.contains("dark") ? "dark" : "light");
+  }, []);
+
+  // Follow live system changes while the user has no explicit saved preference.
+  useEffect(() => {
+    const media = window.matchMedia("(prefers-color-scheme: dark)");
+    const onChange = (event: MediaQueryListEvent) => {
+      if (window.localStorage.getItem(STORAGE_KEY)) return;
+      setTheme(event.matches ? "dark" : "light");
+    };
+    media.addEventListener("change", onChange);
+    return () => media.removeEventListener("change", onChange);
   }, []);
 
   useEffect(() => {
-    const root = document.documentElement;
-    if (theme === "dark") {
-      root.classList.add("dark");
-    } else {
-      root.classList.remove("dark");
-    }
-    window.localStorage.setItem("portfolio-theme", theme);
+    document.documentElement.classList.toggle("dark", theme === "dark");
   }, [theme]);
 
   const toggleTheme = () => {
-    const apply = () => setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+    const apply = () =>
+      setTheme((prev) => {
+        const next = prev === "dark" ? "light" : "dark";
+        // Persist only on an explicit user choice, so first visits keep following the system.
+        window.localStorage.setItem(STORAGE_KEY, next);
+        return next;
+      });
     const doc = document as Document & { startViewTransition?: (callback: () => void) => void };
     if (doc.startViewTransition) {
       doc.startViewTransition(() => flushSync(apply));

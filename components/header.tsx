@@ -199,7 +199,7 @@ export default function Header() {
 
           <div className="nav-actions">
             <nav className="nav-links" aria-label="Primary navigation">
-              {navLinks.slice(1, 5).map((link) => (
+              {navLinks.slice(1).map((link) => (
                 <a
                   key={link.href}
                   href={link.href}

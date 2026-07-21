@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { RiLinkedinBoxFill, RiLoader4Line, RiMailLine, RiPhoneLine, RiSendPlaneLine } from "react-icons/ri";
+import { RiLinkedinBoxFill, RiLoader4Line, RiMailLine, RiMapPinLine, RiPhoneLine, RiSendPlaneLine } from "react-icons/ri";
 import { sendEmail } from "@/actions/sendEmail";
 
 type Field = "name" | "email" | "message";
@@ -59,7 +59,7 @@ export default function Contact() {
         <div className="contact-copy">
           <div className="accent-line" aria-hidden="true" />
           <h2 className="section-title">Bring the hard product problem.</h2>
-          <p className="section-lede">Interested in product leadership, digital transformation, or smart city collaboration? Share the context and Thanh will respond directly.</p>
+          <p className="section-lede">Product leadership, digital transformation, or smart city collaboration — share the context and Thanh will respond directly.</p>
 
           <form className="contact-form" onSubmit={handleSubmit} noValidate>
             <div className="field">
@@ -74,7 +74,7 @@ export default function Contact() {
             </div>
             <div className="field">
               <label htmlFor="contact-message">Project context</label>
-              <textarea id="contact-message" name="message" rows={5} placeholder="What are you building, and where is it stuck?" {...fieldProps("message")} />
+              <textarea id="contact-message" name="message" rows={3} placeholder="What are you building, and where is it stuck?" {...fieldProps("message")} />
               <p id="message-help" className={`field-help ${touched.message && getError("message") ? "is-error" : ""}`}>{touched.message ? getError("message") : "A short description is enough to start."}</p>
             </div>
             <button className="btn btn--primary" id="contact-submit" type="submit" disabled={loading} aria-busy={loading}>
@@ -84,13 +84,18 @@ export default function Contact() {
         </div>
 
         <aside className="contact-aside">
-          <div><p className="meta">Direct channels</p><h3 className="contact-aside-title">Ho Chi Minh City, Vietnam.</h3></div>
+          <div className="contact-aside-head">
+            <p className="meta">Direct channels</p>
+            <h3 className="contact-aside-title">Let&apos;s talk.</h3>
+          </div>
+
           <div className="contact-list">
             <a className="contact-link" id="contact-mailto" href="mailto:thanhtdfu@gmail.com"><RiMailLine aria-hidden="true" /><span>thanhtdfu@gmail.com</span></a>
             <a className="contact-link" id="contact-phone" href="tel:+84933848491"><RiPhoneLine aria-hidden="true" /><span>+84 933 848 491</span></a>
             <a className="contact-link" id="contact-linkedin" href="https://www.linkedin.com/in/thanh-tr%E1%BA%A7n-5815a0112/" target="_blank" rel="noopener noreferrer"><RiLinkedinBoxFill aria-hidden="true" /><span>LinkedIn profile</span></a>
           </div>
-          <p className="section-lede">Open to conversations about product management, digital platforms, and cross-functional delivery.</p>
+
+          <p className="contact-location"><RiMapPinLine aria-hidden="true" /> Ho Chi Minh City, Vietnam</p>
         </aside>
       </div>
     </section>

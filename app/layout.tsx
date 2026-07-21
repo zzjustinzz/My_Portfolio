@@ -7,7 +7,7 @@ import Footer from "../components/footer";
 import { Toaster } from "react-hot-toast";
 import { MotionConfig } from "framer-motion";
 
-const themeInitScript = `try{var t=localStorage.getItem("portfolio-theme");if(t!=="dark"&&t!=="light"){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}if(t==="dark"){document.documentElement.classList.add("dark")}}catch(e){}`;
+const themeInitScript = `try{var t=localStorage.getItem("portfolio-theme-preference");if(t!=="dark"&&t!=="light"){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}if(t==="dark"){document.documentElement.classList.add("dark")}}catch(e){}`;
 
 const geist = localFont({
   src: "./fonts/GeistVF.woff",
