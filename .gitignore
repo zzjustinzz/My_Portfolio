@@ -39,6 +39,7 @@ hero-section.md
 
 # local tooling
 /tmp/
+/.worktrees/
 /.hallmark/
 /.agents/
 /.codex/
