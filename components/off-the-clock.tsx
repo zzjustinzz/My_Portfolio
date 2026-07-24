@@ -10,6 +10,7 @@ import {
   RiMusic2Line,
 } from "react-icons/ri";
 import {
+  type AnimationEvent,
   type KeyboardEvent,
   type MouseEvent,
   useCallback,
@@ -25,8 +26,76 @@ const hobbyIcons = {
   edm: RiMusic2Line,
 };
 
+type HobbyStageProps = {
+  hobby: (typeof hobbiesData)[number];
+  className: string;
+  onOpenImage: (imageIndex: number, opener: HTMLButtonElement) => void;
+  ariaHidden?: boolean;
+  inert?: boolean;
+  onAnimationEnd?: (event: AnimationEvent<HTMLDivElement>) => void;
+};
+
+function HobbyStage({
+  hobby,
+  className,
+  onOpenImage,
+  ariaHidden,
+  inert,
+  onAnimationEnd,
+}: HobbyStageProps): JSX.Element {
+  return (
+    <div
+      className={className}
+      aria-hidden={ariaHidden ? "true" : undefined}
+      inert={inert || undefined}
+      onAnimationEnd={onAnimationEnd}
+    >
+      <figure className="off-clock-hero">
+        <div className="off-clock-hero-media">
+          <Image
+            src={hobby.hero.src}
+            alt={hobby.hero.caption}
+            width={hobby.hero.width}
+            height={hobby.hero.height}
+            sizes="(min-width: 60rem) 64vw, 100vw"
+          />
+        </div>
+        <figcaption>
+          <strong>{hobby.label}</strong>
+          <span>{hobby.blurb}</span>
+        </figcaption>
+      </figure>
+
+      <div className="off-clock-support" aria-label={`${hobby.label} gallery`}>
+        {hobby.shots.map((image, index) => (
+          <button
+            className="off-clock-thumb"
+            type="button"
+            key={image.src}
+            aria-label={`Open ${image.caption} in the lightbox`}
+            onClick={(event) => onOpenImage(index + 1, event.currentTarget)}
+          >
+            <span className="off-clock-thumb-media">
+              <Image
+                src={image.src}
+                alt=""
+                width={image.width}
+                height={image.height}
+                sizes="(min-width: 60rem) 22vw, 50vw"
+              />
+            </span>
+            <span className="off-clock-thumb-caption">{image.caption}</span>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function OffTheClock(): JSX.Element {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [focusedTabIndex, setFocusedTabIndex] = useState(0);
+  const [outgoingIndex, setOutgoingIndex] = useState<number | null>(null);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -35,6 +104,7 @@ export default function OffTheClock(): JSX.Element {
   const previousBodyOverflowRef = useRef<string | null>(null);
 
   const activeHobby = hobbiesData[activeIndex];
+  const outgoingHobby = outgoingIndex === null ? null : hobbiesData[outgoingIndex];
   const activeImages = [activeHobby.hero, ...activeHobby.shots];
   const lightboxImage = activeImages[lightboxIndex ?? 0];
 
@@ -75,14 +145,25 @@ export default function OffTheClock(): JSX.Element {
     });
   }, [activeImages.length]);
 
+  const activateHobby = (nextIndex: number) => {
+    if (nextIndex === activeIndex) return;
+
+    setOutgoingIndex(activeIndex);
+    setActiveIndex(nextIndex);
+  };
+
   const handleTabKeyDown = (index: number, event: KeyboardEvent<HTMLButtonElement>) => {
     if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
 
     event.preventDefault();
     const direction = event.key === "ArrowRight" ? 1 : -1;
     const nextIndex = (index + direction + hobbiesData.length) % hobbiesData.length;
-    setActiveIndex(nextIndex);
+    setFocusedTabIndex(nextIndex);
     tabRefs.current[nextIndex]?.focus({ preventScroll: true });
+  };
+
+  const handleOutgoingAnimationEnd = (event: AnimationEvent<HTMLDivElement>) => {
+    if (event.target === event.currentTarget) setOutgoingIndex(null);
   };
 
   const handleDialogKeyDown = (event: KeyboardEvent<HTMLDialogElement>) => {
@@ -133,8 +214,11 @@ export default function OffTheClock(): JSX.Element {
                 role="tab"
                 aria-selected={isActive}
                 aria-controls={`off-clock-panel-${hobby.key}`}
-                tabIndex={isActive ? 0 : -1}
-                onClick={() => setActiveIndex(index)}
+                tabIndex={index === focusedTabIndex ? 0 : -1}
+                onClick={() => {
+                  setFocusedTabIndex(index);
+                  activateHobby(index);
+                }}
                 onKeyDown={(event) => handleTabKeyDown(index, event)}
               >
                 <Icon aria-hidden="true" />
@@ -151,45 +235,24 @@ export default function OffTheClock(): JSX.Element {
           aria-labelledby={`off-clock-tab-${activeHobby.key}`}
           tabIndex={0}
         >
-          <div className="off-clock-stage" key={activeHobby.key}>
-            <figure className="off-clock-hero">
-              <div className="off-clock-hero-media">
-                <Image
-                  src={activeHobby.hero.src}
-                  alt={activeHobby.hero.caption}
-                  width={activeHobby.hero.width}
-                  height={activeHobby.hero.height}
-                  sizes="(min-width: 60rem) 64vw, 100vw"
-                />
-              </div>
-              <figcaption>
-                <strong>{activeHobby.label}</strong>
-                <span>{activeHobby.blurb}</span>
-              </figcaption>
-            </figure>
-
-            <div className="off-clock-support" aria-label={`${activeHobby.label} gallery`}>
-              {activeHobby.shots.map((image, index) => (
-                <button
-                  className="off-clock-thumb"
-                  type="button"
-                  key={image.src}
-                  aria-label={`Open ${image.caption} in the lightbox`}
-                  onClick={(event) => openDialog(index + 1, event.currentTarget)}
-                >
-                  <span className="off-clock-thumb-media">
-                    <Image
-                      src={image.src}
-                      alt=""
-                      width={image.width}
-                      height={image.height}
-                      sizes="(min-width: 60rem) 22vw, 50vw"
-                    />
-                  </span>
-                  <span className="off-clock-thumb-caption">{image.caption}</span>
-                </button>
-              ))}
-            </div>
+          <div className="off-clock-stage-stack">
+            {outgoingHobby && (
+              <HobbyStage
+                key={outgoingHobby.key}
+                hobby={outgoingHobby}
+                className="off-clock-stage off-clock-stage-outgoing"
+                ariaHidden
+                inert
+                onOpenImage={openDialog}
+                onAnimationEnd={handleOutgoingAnimationEnd}
+              />
+            )}
+            <HobbyStage
+              key={activeHobby.key}
+              hobby={activeHobby}
+              className="off-clock-stage off-clock-stage-incoming"
+              onOpenImage={openDialog}
+            />
           </div>
         </div>
       </div>

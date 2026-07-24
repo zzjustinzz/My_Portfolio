@@ -25,6 +25,7 @@ test("hobby data declares three complete, local, illustrative image sets", async
 
 test("off-the-clock section provides accessible tabs, lightbox controls, and page integration", async () => {
   const component = await readFile(path.join(root, "components/off-the-clock.tsx"), "utf8");
+  const styles = await readFile(path.join(root, "app/off-the-clock.css"), "utf8");
   const page = await readFile(path.join(root, "app/page.tsx"), "utf8");
 
   assert.match(component, /role="tablist"/);
@@ -40,4 +41,26 @@ test("off-the-clock section provides accessible tabs, lightbox controls, and pag
   assert.match(component, /If I&apos;m not at my desk, you&apos;ll find me…/);
   assert.match(page, /import OffTheClock from "@\/components\/off-the-clock"/);
   assert.match(page, /<Experience \/>[\s\S]*<OffTheClock \/>[\s\S]*<Contact \/>/);
+
+  const tabKeyHandler = component.match(/const handleTabKeyDown[\s\S]*?\n  };/)?.[0];
+  assert.ok(tabKeyHandler, "the manual tab keyboard handler should be present");
+  assert.match(tabKeyHandler, /ArrowRight/);
+  assert.match(tabKeyHandler, /ArrowLeft/);
+  assert.match(tabKeyHandler, /focus\(\{ preventScroll: true \}\)/);
+  assert.doesNotMatch(tabKeyHandler, /setActiveIndex/);
+
+  assert.match(component, /const \[outgoingIndex, setOutgoingIndex\] = useState<number \| null>\(null\)/);
+  assert.match(component, /aria-hidden=\{ariaHidden \? "true" : undefined\}/);
+  assert.match(component, /outgoingHobby &&[\s\S]*className="off-clock-stage off-clock-stage-outgoing"[\s\S]*ariaHidden[\s\S]*inert[\s\S]*onAnimationEnd=\{handleOutgoingAnimationEnd\}/);
+  assert.match(component, /className="off-clock-stage off-clock-stage-incoming"/);
+  const outgoingAnimationHandler = component.match(/const handleOutgoingAnimationEnd[\s\S]*?\n  };/)?.[0];
+  assert.match(outgoingAnimationHandler, /setOutgoingIndex\(null\)/);
+  assert.match(styles, /\.off-clock-stage-stack\s*\{[^}]*display:\s*grid/);
+  assert.match(styles, /\.off-clock-stage\s*\{[^}]*grid-area:\s*1\s*\/\s*1/);
+  assert.match(styles, /\.off-clock-stage--outgoing\s*\{[^}]*animation:\s*off-clock-content-out/);
+  assert.match(styles, /\.off-clock-stage--incoming\s*\{[^}]*animation:\s*off-clock-content-in/);
+  assert.match(styles, /@keyframes off-clock-content-out\s*\{\s*from\s*\{\s*opacity:\s*1/);
+  const crossfadeKeyframes = styles.match(/@keyframes off-clock-content-in[\s\S]*?\n}\n\n@keyframes off-clock-content-out[\s\S]*?\n}/)?.[0];
+  assert.ok(crossfadeKeyframes, "both opacity keyframes should be present together");
+  assert.doesNotMatch(crossfadeKeyframes, /transform:/);
 });
