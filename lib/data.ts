@@ -73,6 +73,69 @@ export const projectsData: Project[] = [
   },
 ];
 
+export interface HobbyImage {
+  src: string;
+  caption: string;
+  width: number;
+  height: number;
+}
+
+export interface Hobby {
+  key: "basketball" | "sneakers" | "edm";
+  label: string;
+  blurb: string;
+  hero: HobbyImage;
+  shots: [HobbyImage, HobbyImage];
+}
+
+export const hobbiesData: Hobby[] = [
+  {
+    key: "basketball",
+    label: "Basketball",
+    blurb: "Weekend pickup games — where I reset and compete.",
+    hero: {
+      src: "/hobbies/bball-1.jpg",
+      caption: "Illustrative photograph — basketball on the court",
+      width: 1400,
+      height: 1050,
+    },
+    shots: [
+      { src: "/hobbies/bball-2.jpg", caption: "Illustrative photograph — a basketball player in motion", width: 1400, height: 2091 },
+      { src: "/hobbies/bball-3.jpg", caption: "Illustrative photograph — a basketball game", width: 1400, height: 913 },
+    ],
+  },
+  {
+    key: "sneakers",
+    label: "Sneakers",
+    blurb: "Chasing grails and fresh drops; the collection keeps growing.",
+    hero: {
+      src: "/hobbies/sneaker-2.jpg",
+      caption: "Illustrative photograph — sneakers on display",
+      width: 1400,
+      height: 933,
+    },
+    shots: [
+      { src: "/hobbies/sneaker-1.jpg", caption: "Illustrative photograph — a sneaker detail", width: 1400, height: 2100 },
+      { src: "/hobbies/sneaker-3.jpg", caption: "Illustrative photograph — a sneaker collection", width: 1400, height: 933 },
+    ],
+  },
+  {
+    key: "edm",
+    label: "EDM",
+    blurb: "Lineups and light shows across the EDM circuit.",
+    hero: {
+      src: "/hobbies/edm-2.jpg",
+      caption: "Illustrative photograph — an EDM performance",
+      width: 1400,
+      height: 933,
+    },
+    shots: [
+      { src: "/hobbies/edm-1.jpg", caption: "Illustrative photograph — a festival crowd", width: 1400, height: 2100 },
+      { src: "/hobbies/edm-3.jpg", caption: "Illustrative photograph — stage lights at an EDM show", width: 1400, height: 934 },
+    ],
+  },
+];
+
 export interface SkillGroup {
   category: string;
   skills: string[];
