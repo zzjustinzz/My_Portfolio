@@ -63,4 +63,9 @@ test("off-the-clock section provides accessible tabs, lightbox controls, and pag
   const crossfadeKeyframes = styles.match(/@keyframes off-clock-content-in[\s\S]*?\n}\n\n@keyframes off-clock-content-out[\s\S]*?\n}/)?.[0];
   assert.ok(crossfadeKeyframes, "both opacity keyframes should be present together");
   assert.doesNotMatch(crossfadeKeyframes, /transform:/);
+  assert.match(styles, /\.off-clock-tab:disabled,[\s\S]*\.off-clock-dialog-button:disabled\s*\{[^}]*cursor:\s*not-allowed/);
+  const reducedMotion = styles.match(/@media \(prefers-reduced-motion: reduce\)\s*\{[\s\S]*\n\}/)?.[0];
+  assert.ok(reducedMotion, "a reduced-motion override should be present");
+  assert.match(reducedMotion, /\.off-clock-dialog-button/);
+  assert.match(reducedMotion, /transform:\s*none/);
 });
