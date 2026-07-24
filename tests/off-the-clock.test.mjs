@@ -51,8 +51,8 @@ test("off-the-clock section provides accessible tabs, lightbox controls, and pag
 
   assert.match(component, /const \[outgoingIndex, setOutgoingIndex\] = useState<number \| null>\(null\)/);
   assert.match(component, /aria-hidden=\{ariaHidden \? "true" : undefined\}/);
-  assert.match(component, /outgoingHobby &&[\s\S]*className="off-clock-stage off-clock-stage-outgoing"[\s\S]*ariaHidden[\s\S]*inert[\s\S]*onAnimationEnd=\{handleOutgoingAnimationEnd\}/);
-  assert.match(component, /className="off-clock-stage off-clock-stage-incoming"/);
+  assert.match(component, /outgoingHobby &&[\s\S]*className="off-clock-stage off-clock-stage--outgoing"[\s\S]*ariaHidden[\s\S]*inert[\s\S]*onAnimationEnd=\{handleOutgoingAnimationEnd\}/);
+  assert.match(component, /className="off-clock-stage off-clock-stage--incoming"/);
   const outgoingAnimationHandler = component.match(/const handleOutgoingAnimationEnd[\s\S]*?\n  };/)?.[0];
   assert.match(outgoingAnimationHandler, /setOutgoingIndex\(null\)/);
   assert.match(styles, /\.off-clock-stage-stack\s*\{[^}]*display:\s*grid/);

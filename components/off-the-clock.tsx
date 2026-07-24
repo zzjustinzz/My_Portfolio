@@ -240,7 +240,7 @@ export default function OffTheClock(): JSX.Element {
               <HobbyStage
                 key={outgoingHobby.key}
                 hobby={outgoingHobby}
-                className="off-clock-stage off-clock-stage-outgoing"
+                className="off-clock-stage off-clock-stage--outgoing"
                 ariaHidden
                 inert
                 onOpenImage={openDialog}
@@ -250,7 +250,7 @@ export default function OffTheClock(): JSX.Element {
             <HobbyStage
               key={activeHobby.key}
               hobby={activeHobby}
-              className="off-clock-stage off-clock-stage-incoming"
+              className="off-clock-stage off-clock-stage--incoming"
               onOpenImage={openDialog}
             />
           </div>
