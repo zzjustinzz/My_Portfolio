@@ -1,0 +1,65 @@
+/* Hallmark · pre-emit critique: P5 H5 E5 S5 R5 V5 */
+/* Hallmark · component: off-the-clock section · genre: playful · theme: Cobalt
+ * states: tabs + lightbox · motion: opacity crossfade · contrast: pass
+ */
+.off-clock-section { padding-block: var(--space-4xl); background: var(--color-graphite); color: var(--color-graphite-ink); }
+.off-clock-shell { display: grid; gap: var(--space-2xl); }
+.off-clock-header { display: grid; gap: var(--space-md); min-width: 0; }
+.off-clock-title { max-width: 12ch; color: var(--color-graphite-ink); font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4.75rem); font-style: normal; font-weight: 750; line-height: 1.02; letter-spacing: -0.05em; overflow-wrap: anywhere; }
+.off-clock-lede { max-width: 58ch; color: var(--color-graphite-muted); font-size: var(--text-md); line-height: 1.55; }
+.off-clock-tabs { display: flex; flex-wrap: wrap; gap: var(--space-xs); }
+.off-clock-tab { min-height: 44px; display: inline-flex; align-items: center; gap: var(--space-xs); padding-inline: var(--space-md); border: var(--rule-hair) solid var(--color-rule-2); border-radius: var(--radius-pill); background: transparent; color: var(--color-graphite-muted); font-weight: 650; white-space: nowrap; transition: background-color var(--dur-short) var(--ease-out), border-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out), transform var(--dur-micro) var(--ease-out); }
+.off-clock-tab svg { flex: 0 0 auto; font-size: var(--text-md); }
+.off-clock-tab[aria-selected="true"] { border-color: var(--color-graphite-accent); background: var(--color-graphite-2); color: var(--color-graphite-ink); }
+.off-clock-panel { min-width: 0; }
+.off-clock-stage { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-md); min-width: 0; animation: off-clock-content-in var(--dur-short) var(--ease-out) both; }
+.off-clock-hero { min-width: 0; display: grid; gap: var(--space-md); }
+.off-clock-hero-media { min-width: 0; aspect-ratio: 4 / 3; overflow: hidden; border-radius: var(--radius-panel); background: var(--color-graphite-2); }
+.off-clock-hero-media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.off-clock-hero figcaption { display: grid; gap: var(--space-2xs); color: var(--color-graphite-muted); line-height: 1.5; }
+.off-clock-hero figcaption strong { color: var(--color-graphite-ink); font-family: var(--font-display); font-size: var(--text-md); font-style: normal; font-weight: 750; }
+.off-clock-support { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-md); min-width: 0; }
+.off-clock-thumb { min-width: 0; min-height: 44px; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-xs); padding: 0 0 var(--space-xs); overflow: hidden; border: var(--rule-hair) solid var(--color-rule-2); border-radius: var(--radius-card); background: var(--color-graphite-2); color: var(--color-graphite-ink); text-align: start; transition: border-color var(--dur-short) var(--ease-out), transform var(--dur-short) var(--ease-out); }
+.off-clock-thumb-media { display: block; min-width: 0; aspect-ratio: 4 / 3; overflow: hidden; }
+.off-clock-thumb-media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.off-clock-thumb-caption { min-width: 0; overflow: hidden; padding-inline: var(--space-xs); color: var(--color-graphite-muted); font-size: var(--text-xs); line-height: 1.4; text-overflow: ellipsis; white-space: nowrap; }
+.off-clock-tab:focus-visible,
+.off-clock-thumb:focus-visible,
+.off-clock-dialog-button:focus-visible { outline: 2px solid var(--color-graphite-accent); outline-offset: 3px; }
+.off-clock-tab:active,
+.off-clock-thumb:active,
+.off-clock-dialog-button:active { transform: translateY(1px); }
+
+.off-clock-dialog { position: fixed; inset: 0; width: min(calc(100% - 2rem), 68rem); height: fit-content; max-height: min(90svh, 54rem); margin: auto; padding: 0; overflow: hidden; border: var(--rule-hair) solid var(--color-rule-2); border-radius: var(--radius-panel); background: var(--color-graphite); color: var(--color-graphite-ink); }
+.off-clock-dialog:not([open]) { display: none; }
+.off-clock-dialog::backdrop { background: var(--color-overlay-strong); }
+.off-clock-dialog-inner { max-height: min(90svh, 54rem); display: grid; grid-template-rows: auto minmax(0, 1fr) auto; gap: var(--space-md); padding: var(--space-md); }
+.off-clock-dialog-bar { display: flex; align-items: center; justify-content: space-between; gap: var(--space-md); }
+.off-clock-dialog-bar p { min-width: 0; display: flex; align-items: baseline; gap: var(--space-sm); color: var(--color-graphite-ink); font-family: var(--font-display); font-size: var(--text-md); font-weight: 750; }
+.off-clock-dialog-bar p span { color: var(--color-graphite-muted); font-family: var(--font-mono); font-size: var(--text-xs); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.off-clock-dialog-button { width: 44px; height: 44px; flex: 0 0 auto; display: inline-grid; place-items: center; border: var(--rule-hair) solid var(--color-rule-2); border-radius: var(--radius-pill); background: var(--color-graphite-2); color: var(--color-graphite-ink); font-size: var(--text-lg); transition: background-color var(--dur-short) var(--ease-out), border-color var(--dur-short) var(--ease-out), transform var(--dur-micro) var(--ease-out); }
+.off-clock-dialog-figure { min-height: 0; display: grid; gap: var(--space-sm); justify-items: center; }
+.off-clock-dialog-figure img { width: auto; max-width: 100%; height: auto; max-height: min(66svh, 40rem); object-fit: contain; border-radius: var(--radius-card); background: var(--color-graphite-2); }
+.off-clock-dialog-figure figcaption { max-width: 58ch; color: var(--color-graphite-muted); font-size: var(--text-sm); line-height: 1.45; text-align: center; }
+.off-clock-dialog-nav { display: flex; justify-content: space-between; gap: var(--space-md); }
+
+@keyframes off-clock-content-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .off-clock-tab:hover { border-color: var(--color-graphite-accent); color: var(--color-graphite-ink); }
+  .off-clock-thumb:hover { border-color: var(--color-graphite-accent); transform: translateY(-2px); }
+  .off-clock-dialog-button:hover { border-color: var(--color-graphite-accent); background: var(--color-glass-hover); }
+}
+
+@media (min-width: 60rem) {
+  .off-clock-stage { grid-template-columns: minmax(0, 1.45fr) minmax(14rem, 0.55fr); gap: var(--space-lg); }
+  .off-clock-support { grid-template-columns: minmax(0, 1fr); grid-template-rows: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .off-clock-stage { animation-duration: 150ms; }
+  .off-clock-thumb:hover { transform: none; }
+}

@@ -22,3 +22,22 @@ test("hobby data declares three complete, local, illustrative image sets", async
   }
   assert.equal((source.match(/Illustrative photograph/g) ?? []).length, 9);
 });
+
+test("off-the-clock section provides accessible tabs, lightbox controls, and page integration", async () => {
+  const component = await readFile(path.join(root, "components/off-the-clock.tsx"), "utf8");
+  const page = await readFile(path.join(root, "app/page.tsx"), "utf8");
+
+  assert.match(component, /role="tablist"/);
+  assert.match(component, /role="tab"/);
+  assert.match(component, /aria-selected=/);
+  assert.match(component, /aria-controls=/);
+  assert.match(component, /ArrowRight/);
+  assert.match(component, /ArrowLeft/);
+  assert.match(component, /showModal\(\)/);
+  assert.match(component, /<dialog/);
+  assert.match(component, /aria-modal="true"/);
+  assert.match(component, /Escape/);
+  assert.match(component, /If I&apos;m not at my desk, you&apos;ll find me…/);
+  assert.match(page, /import OffTheClock from "@\/components\/off-the-clock"/);
+  assert.match(page, /<Experience \/>[\s\S]*<OffTheClock \/>[\s\S]*<Contact \/>/);
+});
