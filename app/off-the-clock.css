@@ -13,7 +13,7 @@
 .off-clock-tab { min-height: 44px; display: inline-flex; align-items: center; gap: var(--space-xs); padding-inline: var(--space-md); border: var(--rule-hair) solid var(--color-rule-2); border-radius: var(--radius-pill); background: transparent; color: var(--color-graphite-muted); font-weight: 650; white-space: nowrap; transition: background-color var(--dur-short) var(--ease-out), border-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out), transform var(--dur-micro) var(--ease-out); }
 .off-clock-tab svg { flex: 0 0 auto; font-size: var(--text-md); }
 .off-clock-tab[aria-selected="true"] { border-color: var(--color-graphite-accent); background: var(--color-graphite-2); color: var(--color-graphite-ink); }
-.off-clock-panel { min-width: 0; }
+.off-clock-panel { grid-area: 1 / 1; min-width: 0; }
 .off-clock-stage-stack { display: grid; grid-template-columns: minmax(0, 1fr); min-width: 0; }
 .off-clock-stage { grid-area: 1 / 1; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-md); min-width: 0; }
 .off-clock-stage--incoming { animation: off-clock-content-in var(--dur-short) var(--ease-out) both; }

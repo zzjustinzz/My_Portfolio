@@ -47,7 +47,6 @@ function HobbyStage({
     <div
       className={className}
       aria-hidden={ariaHidden ? "true" : undefined}
-      inert={inert || undefined}
       onAnimationEnd={onAnimationEnd}
     >
       <figure className="off-clock-hero">
@@ -72,6 +71,7 @@ function HobbyStage({
             className="off-clock-thumb"
             type="button"
             key={image.src}
+            disabled={inert}
             aria-label={`Open ${image.caption} in the lightbox`}
             onClick={(event) => onOpenImage(index + 1, event.currentTarget)}
           >
@@ -104,7 +104,6 @@ export default function OffTheClock(): JSX.Element {
   const previousBodyOverflowRef = useRef<string | null>(null);
 
   const activeHobby = hobbiesData[activeIndex];
-  const outgoingHobby = outgoingIndex === null ? null : hobbiesData[outgoingIndex];
   const activeImages = [activeHobby.hero, ...activeHobby.shots];
   const lightboxImage = activeImages[lightboxIndex ?? 0];
 
@@ -146,6 +145,7 @@ export default function OffTheClock(): JSX.Element {
   }, [activeImages.length]);
 
   const activateHobby = (nextIndex: number) => {
+    if (outgoingIndex !== null) return;
     if (nextIndex === activeIndex) return;
 
     setOutgoingIndex(activeIndex);
@@ -228,32 +228,42 @@ export default function OffTheClock(): JSX.Element {
           })}
         </div>
 
-        <div
-          id={`off-clock-panel-${activeHobby.key}`}
-          className="off-clock-panel"
-          role="tabpanel"
-          aria-labelledby={`off-clock-tab-${activeHobby.key}`}
-          tabIndex={0}
-        >
-          <div className="off-clock-stage-stack">
-            {outgoingHobby && (
-              <HobbyStage
-                key={outgoingHobby.key}
-                hobby={outgoingHobby}
-                className="off-clock-stage off-clock-stage--outgoing"
-                ariaHidden
-                inert
-                onOpenImage={openDialog}
-                onAnimationEnd={handleOutgoingAnimationEnd}
-              />
-            )}
-            <HobbyStage
-              key={activeHobby.key}
-              hobby={activeHobby}
-              className="off-clock-stage off-clock-stage--incoming"
-              onOpenImage={openDialog}
-            />
-          </div>
+        <div className="off-clock-stage-stack">
+          {hobbiesData.map((hobby, index) => {
+            const isActive = index === activeIndex;
+            const isOutgoing = index === outgoingIndex;
+
+            return (
+              <div
+                key={hobby.key}
+                id={`off-clock-panel-${hobby.key}`}
+                className="off-clock-panel"
+                role="tabpanel"
+                aria-labelledby={`off-clock-tab-${hobby.key}`}
+                aria-hidden={isOutgoing ? "true" : undefined}
+                tabIndex={isActive ? 0 : -1}
+                hidden={!isActive && !isOutgoing}
+              >
+                {isOutgoing && (
+                  <HobbyStage
+                    hobby={hobby}
+                    className="off-clock-stage off-clock-stage--outgoing"
+                    ariaHidden
+                    inert
+                    onOpenImage={openDialog}
+                    onAnimationEnd={handleOutgoingAnimationEnd}
+                  />
+                )}
+                {isActive && (
+                  <HobbyStage
+                    hobby={hobby}
+                    className="off-clock-stage off-clock-stage--incoming"
+                    onOpenImage={openDialog}
+                  />
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
 

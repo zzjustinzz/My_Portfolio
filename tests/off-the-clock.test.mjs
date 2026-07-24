@@ -32,6 +32,8 @@ test("off-the-clock section provides accessible tabs, lightbox controls, and pag
   assert.match(component, /role="tab"/);
   assert.match(component, /aria-selected=/);
   assert.match(component, /aria-controls=/);
+  assert.match(component, /hobbiesData\.map\(\(hobby, index\) => \{[\s\S]*id=\{`off-clock-panel-\$\{hobby\.key\}`\}/);
+  assert.match(component, /hidden=\{!isActive && !isOutgoing\}/);
   assert.match(component, /ArrowRight/);
   assert.match(component, /ArrowLeft/);
   assert.match(component, /showModal\(\)/);
@@ -48,10 +50,14 @@ test("off-the-clock section provides accessible tabs, lightbox controls, and pag
   assert.match(tabKeyHandler, /ArrowLeft/);
   assert.match(tabKeyHandler, /focus\(\{ preventScroll: true \}\)/);
   assert.doesNotMatch(tabKeyHandler, /setActiveIndex/);
+  const activationHandler = component.match(/const activateHobby[\s\S]*?\n  };/)?.[0];
+  assert.ok(activationHandler, "the hobby activation handler should be present");
+  assert.match(activationHandler, /if \(outgoingIndex !== null\) return/);
 
   assert.match(component, /const \[outgoingIndex, setOutgoingIndex\] = useState<number \| null>\(null\)/);
   assert.match(component, /aria-hidden=\{ariaHidden \? "true" : undefined\}/);
-  assert.match(component, /outgoingHobby &&[\s\S]*className="off-clock-stage off-clock-stage--outgoing"[\s\S]*ariaHidden[\s\S]*inert[\s\S]*onAnimationEnd=\{handleOutgoingAnimationEnd\}/);
+  assert.match(component, /disabled=\{inert\}/);
+  assert.match(component, /isOutgoing &&[\s\S]*className="off-clock-stage off-clock-stage--outgoing"[\s\S]*ariaHidden[\s\S]*inert[\s\S]*onAnimationEnd=\{handleOutgoingAnimationEnd\}/);
   assert.match(component, /className="off-clock-stage off-clock-stage--incoming"/);
   const outgoingAnimationHandler = component.match(/const handleOutgoingAnimationEnd[\s\S]*?\n  };/)?.[0];
   assert.match(outgoingAnimationHandler, /setOutgoingIndex\(null\)/);
