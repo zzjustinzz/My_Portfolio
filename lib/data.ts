@@ -7,6 +7,15 @@ export const navLinks = [
   { label: "Contact", href: "#contact" },
 ];
 
+export interface CaseImage {
+  /** Path under /public */
+  src: string;
+  /** Short, factual caption describing the shot */
+  caption: string;
+  /** Layout hint: "shot" = portrait app screenshot, "wide" = diagram/illustration */
+  kind?: "shot" | "wide";
+}
+
 export interface Project {
   title: string;
   role: string;
@@ -14,6 +23,10 @@ export interface Project {
   description: string;
   metrics: string[];
   tags: string[];
+  /** Public reference imagery — App Store screenshots, product diagrams, etc. */
+  images?: CaseImage[];
+  /** Where the reference images came from (shown as provenance) */
+  imageSource?: string;
   liveUrl?: string;
   appStoreUrl?: string;
   playStoreUrl?: string;
@@ -28,6 +41,13 @@ export const projectsData: Project[] = [
       "Led HCMC Metro's digital product (FPT.Maas) and payment-integration workstreams, coordinating Metro authorities, banks, card schemes, e-wallets, AFC vendors, engineering, QA, and operations from requirements and solution design through UAT and go-live.",
     metrics: ["90%+ cashless payments", "6+ payment partners integrated", "Requirements → go-live ownership"],
     tags: ["AFC", "EMV", "QR", "VNeID", "Biometric", "Payment Integration"],
+    images: [
+      { src: "/cases/maas-iso-devices-figma.png", caption: "AFC ecosystem — metro, bus, QR, EMV & contactless validators", kind: "wide" },
+      { src: "/cases/tap-napas.jpg", caption: "Tap-and-go with a NAPAS bank card at the fare gate", kind: "wide" },
+      { src: "/cases/gate-pay2.jpg", caption: "Scanning a QR-code ticket to pass the fare gate", kind: "wide" },
+      { src: "/cases/afc-gatectrl.jpg", caption: "Automatic fare-collection gate line at a Metro station", kind: "wide" },
+    ],
+    imageSource: "maas.paas.io.vn · Thanh Niên · Chính Phủ · Phong Vũ",
     liveUrl: "https://maas.paas.io.vn/",
   },
   {
@@ -38,6 +58,15 @@ export const projectsData: Project[] = [
       "Delivered the HCMC Metro HURC application for journey planning, fare calculation, station information, passenger guidance, and digital services — giving Metro riders a single companion app from trip planning through in-station navigation.",
     metrics: ["500,000+ downloads", "Fare calculation & journey planning", "Station info & passenger guidance"],
     tags: ["Urban Mobility", "Metro", "Journey Planning", "Fare Calculation", "Passenger Experience"],
+    images: [
+      { src: "/cases/hurc-1.png", caption: "Home — ticket info, station info, route map & feedback", kind: "shot" },
+      { src: "/cases/hurc-10.png", caption: "HCMC metro network route map", kind: "shot" },
+      { src: "/cases/hurc-3.png", caption: "Station guide — Bến Thành station detail & nearby places", kind: "shot" },
+      { src: "/cases/hurc-4.png", caption: "Fare information feed for Metro Line 1", kind: "shot" },
+      { src: "/cases/hurc-9.png", caption: "Passenger feedback & request tracking", kind: "shot" },
+      { src: "/cases/hurc-6.png", caption: "Construction-progress news timeline", kind: "shot" },
+    ],
+    imageSource: "Apple App Store",
     liveUrl: "https://hurc.vn/app",
   },
   {
@@ -48,6 +77,17 @@ export const projectsData: Project[] = [
       "Pioneered multimodal journey planning connecting buses with ride-hailing, river bus, metro, and other public transport across HCMC. Delivered vehicle tracking, arrival-time prediction, route planning, personalized stops, service info, and direct rider feedback to operators.",
     metrics: ["245,000+ Zalo Mini App users", "261,000+ visits in 40 days", "Real-time tracking & ETA prediction"],
     tags: ["Urban Mobility", "Zalo Mini App", "Multimodal", "Real-time Tracking", "User Research"],
+    images: [
+      { src: "/cases/zalo-1.jpg", caption: "Go!Bus Zalo Mini App in use at a city bus stop", kind: "wide" },
+      { src: "/cases/gobus-1.png", caption: "Home — bus, routes, journey planning & river-bus tickets", kind: "shot" },
+      { src: "/cases/gobus-2.png", caption: "Live map — bus stops, bike-share & arrival times", kind: "shot" },
+      { src: "/cases/gobus-4.png", caption: "Journey planner — origin to destination", kind: "shot" },
+      { src: "/cases/gobus-5.png", caption: "Suggested multimodal routes with fare & travel time", kind: "shot" },
+      { src: "/cases/gobus-3.png", caption: "Colour-coded HCMC bus route directory", kind: "shot" },
+      { src: "/cases/zalo-2.png", caption: "Finding the Go!Bus Mini App on Zalo — no install needed", kind: "wide" },
+      { src: "/cases/zalo-3.png", caption: "Zalo Mini App features — routes, planner, lookup, news", kind: "wide" },
+    ],
+    imageSource: "Apple App Store · Thanh Niên",
     appStoreUrl: "https://apps.apple.com/vn/app/go-bus-tphcm/id1465448216",
     playStoreUrl: "https://play.google.com/store/apps/details?id=com.fts.mybus",
   },
@@ -59,6 +99,13 @@ export const projectsData: Project[] = [
       "Owned strategy, roadmap, and end-to-end delivery for TTGT, positioning it among the most recognized must-have digital services for HCMC residents. Delivered real-time traffic, congestion, incidents, road restrictions, and camera feeds while supporting authorities with centralized operational data.",
     metrics: ["1M+ downloads", "Citywide traffic coverage", "Centralized operational data"],
     tags: ["Product Strategy", "Smart City", "Real-time Data", "Public Sector", "Scrum"],
+    images: [
+      { src: "/cases/ttgt-ui-map.jpg", caption: "Current app — citywide live-camera map (2025)", kind: "shot" },
+      { src: "/cases/ttgt-ui-nearby.jpg", caption: "Current app — live cameras within a 5 km radius", kind: "shot" },
+      { src: "/cases/ttgt-3.png", caption: "Live traffic camera feed over a congestion map", kind: "shot" },
+      { src: "/cases/ttgt-5.png", caption: "Location detail — incident alert & live camera", kind: "shot" },
+    ],
+    imageSource: "Apple App Store · Tuổi Trẻ",
     appStoreUrl: "https://apps.apple.com/vn/app/ttgt-tp-h%E1%BB%93-ch%C3%AD-minh/id1193052114",
     playStoreUrl: "https://play.google.com/store/apps/details?id=com.fts.notis",
   },

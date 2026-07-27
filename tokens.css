@@ -25,6 +25,13 @@
   --color-overlay: oklch(12% 0.02 258 / 0.62);
   --color-shadow: oklch(20% 0.025 258 / 0.12);
   --color-flash: oklch(52% 0.21 256 / 0.16);
+  --color-scrim: oklch(12% 0.02 258 / 0.92);
+  --color-overlay-strong: oklch(10% 0.02 258 / 0.86);
+  --color-glass: oklch(20% 0.02 258 / 0.72);
+  --color-glass-hover: oklch(28% 0.05 256 / 0.85);
+  --color-glass-border: oklch(100% 0 0 / 0.22);
+  --color-on-dark: oklch(97% 0.004 250);
+  --color-lightbox-shadow: oklch(0% 0 0 / 0.5);
 
   --font-display: var(--font-geist), ui-sans-serif, sans-serif;
   --font-body: var(--font-geist), ui-sans-serif, sans-serif;

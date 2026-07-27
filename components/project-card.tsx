@@ -2,6 +2,7 @@
 
 import { RiAppleFill, RiArrowRightUpLine, RiGooglePlayFill } from "react-icons/ri";
 import type { Project } from "@/lib/data";
+import CaseGallery from "./case-gallery";
 
 export default function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
@@ -16,6 +17,9 @@ export default function ProjectCard({ project, index }: { project: Project; inde
         {project.metrics.map((metric) => <div className="project-fact" key={metric}>{metric}</div>)}
       </div>
       <div className="project-tags">{project.tags.map((tag) => <span className="tag" key={tag}>{tag}</span>)}</div>
+      {project.images && project.images.length > 0 && (
+        <CaseGallery images={project.images} title={project.title} />
+      )}
       {(project.liveUrl || project.appStoreUrl || project.playStoreUrl) && (
         <div className="project-links">
           {project.liveUrl && (
