@@ -142,13 +142,13 @@ export const hobbiesData: Hobby[] = [
     blurb: "Weekend pickup games — where I reset and compete.",
     hero: {
       src: "/hobbies/bball-1.jpg",
-      caption: "Illustrative photograph — basketball on the court",
+      caption: "Basketball on the court",
       width: 1400,
       height: 1050,
     },
     shots: [
-      { src: "/hobbies/bball-2.jpg", caption: "Illustrative photograph — a basketball player in motion", width: 1400, height: 2091 },
-      { src: "/hobbies/bball-3.jpg", caption: "Illustrative photograph — a basketball game", width: 1400, height: 913 },
+      { src: "/hobbies/bball-team-1.jpg", caption: "Team VSBG before tip-off", width: 799, height: 400 },
+      { src: "/hobbies/bball-team-2.jpg", caption: "Post-game with the ZBC Kirin squad", width: 1600, height: 1200 },
     ],
   },
   {
@@ -157,13 +157,13 @@ export const hobbiesData: Hobby[] = [
     blurb: "Chasing grails and fresh drops; the collection keeps growing.",
     hero: {
       src: "/hobbies/sneaker-2.jpg",
-      caption: "Illustrative photograph — sneakers on display",
+      caption: "Sneakers on display",
       width: 1400,
       height: 933,
     },
     shots: [
-      { src: "/hobbies/sneaker-1.jpg", caption: "Illustrative photograph — a sneaker detail", width: 1400, height: 2100 },
-      { src: "/hobbies/sneaker-3.jpg", caption: "Illustrative photograph — a sneaker collection", width: 1400, height: 933 },
+      { src: "/hobbies/sneaker-collection.jpg", caption: "My sneaker collection at home", width: 1600, height: 1200 },
+      { src: "/hobbies/sneaker-solemate.jpg", caption: "SOLEMATE — my sneaker shop", width: 1800, height: 685 },
     ],
   },
   {
@@ -171,14 +171,14 @@ export const hobbiesData: Hobby[] = [
     label: "EDM",
     blurb: "Lineups and light shows across the EDM circuit.",
     hero: {
-      src: "/hobbies/edm-2.jpg",
-      caption: "Illustrative photograph — an EDM performance",
-      width: 1400,
-      height: 933,
+      src: "/hobbies/edm-stage.jpg",
+      caption: "Festival stage pyrotechnics",
+      width: 1600,
+      height: 1067,
     },
     shots: [
-      { src: "/hobbies/edm-1.jpg", caption: "Illustrative photograph — a festival crowd", width: 1400, height: 2100 },
-      { src: "/hobbies/edm-3.jpg", caption: "Illustrative photograph — stage lights at an EDM show", width: 1400, height: 934 },
+      { src: "/hobbies/edm-friends.jpg", caption: "With the EDM & Friends crew at the festival", width: 1600, height: 1200 },
+      { src: "/hobbies/edm-lights.jpg", caption: "Crowd under the stage lights", width: 1600, height: 955 },
     ],
   },
 ];
