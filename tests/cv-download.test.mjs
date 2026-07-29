@@ -61,8 +61,10 @@ test("Navi exposes the same CV as a persistent responsive resource", async () =>
   assert.match(styles, /\.chat-resource:active\s*\{[^}]*transform:\s*translateY\(1px\)/);
   assert.match(styles, /@media \(hover: hover\)[\s\S]*\.chat-resource:hover/);
   assert.match(styles, /@media \(max-width: 39\.99rem\)[\s\S]*\.chat-resource/);
-  assert.match(styles, /@media \(max-width: 39\.99rem\)[\s\S]*\.chat-resource\s*\{[^}]*padding-inline:\s*var\(--space-sm\)[^}]*white-space:\s*normal/);
-  assert.match(styles, /@media \(max-width: 39\.99rem\)[\s\S]*\.chat-resource-label\s*\{[^}]*flex:\s*1\s+1\s+auto/);
-  assert.match(styles, /@media \(max-width: 39\.99rem\)[\s\S]*\.chat-resource-label\s*>\s*span\s*\{[^}]*overflow-wrap:\s*anywhere/);
+  assert.match(styles, /\.chat-resource-label\s*\{[^}]*white-space:\s*nowrap/);
+  assert.match(styles, /@media \(max-width: 39\.99rem\)[\s\S]*\.chat-resource\s*\{[^}]*padding-inline:\s*var\(--space-sm\)/);
+  assert.match(styles, /@media \(max-width: 39\.99rem\)[\s\S]*\.chat-resource-meta\s*\{[^}]*display:\s*none/);
+  assert.doesNotMatch(styles, /\.chat-resource\s*\{[^}]*white-space:\s*normal/);
+  assert.doesNotMatch(styles, /\.chat-resource-label\s*>\s*span\s*\{[^}]*overflow-wrap/);
   assert.match(styles, /@media \(prefers-reduced-motion: reduce\)[\s\S]*\.chat-resource:active\s*\{[^}]*transform:\s*none/);
 });
