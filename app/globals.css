@@ -418,7 +418,7 @@ button:active { transform: translateY(1px); }
   .hero-copy, .system-map { animation: none !important; }
   .map-line { stroke-dashoffset: 0; }
   .case-thumb:hover { transform: none; }
-  .chat-resource:active { transform: none; }
+  .btn:hover, .btn:active, .chat-resource:active { transform: none; }
   .case-strip { scroll-behavior: auto; }
   ::view-transition-old(root), ::view-transition-new(root) { animation: none !important; }
 }

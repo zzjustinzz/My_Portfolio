@@ -9,6 +9,22 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const expectedCvHash = "38c2da503836d8f0c11d6bd49f184f7ac60a2e2654572cc6aed4fabab713efac";
 const downloadName = "Thanh_Tran_Senior_Product_Owner_Product_Manager_CV.pdf";
 
+function getCssBlock(styles, marker) {
+  const markerIndex = styles.indexOf(marker);
+  assert.notEqual(markerIndex, -1, `${marker} should be present`);
+
+  const openingBrace = styles.indexOf("{", markerIndex);
+  let depth = 0;
+
+  for (let index = openingBrace; index < styles.length; index += 1) {
+    if (styles[index] === "{") depth += 1;
+    if (styles[index] === "}") depth -= 1;
+    if (depth === 0) return styles.slice(openingBrace + 1, index);
+  }
+
+  assert.fail(`${marker} should have a closing brace`);
+}
+
 test("public Resume.pdf is the supplied two-page CV", async () => {
   const pdf = await readFile(path.join(root, "public", "Resume.pdf"));
   assert.equal(pdf.subarray(0, 5).toString("ascii"), "%PDF-");
@@ -67,4 +83,17 @@ test("Navi exposes the same CV as a persistent responsive resource", async () =>
   assert.doesNotMatch(styles, /\.chat-resource\s*\{[^}]*white-space:\s*normal/);
   assert.doesNotMatch(styles, /\.chat-resource-label\s*>\s*span\s*\{[^}]*overflow-wrap/);
   assert.match(styles, /@media \(prefers-reduced-motion: reduce\)[\s\S]*\.chat-resource:active\s*\{[^}]*transform:\s*none/);
+});
+
+test("reduced motion neutralizes hero button hover and active movement", async () => {
+  const styles = await readFile(path.join(root, "app", "globals.css"), "utf8");
+  const reducedMotion = getCssBlock(styles, "@media (prefers-reduced-motion: reduce)");
+  const neutralizedSelectors = new Set(
+    [...reducedMotion.matchAll(/([^{}]+)\{[^{}]*transform:\s*none[^{}]*\}/g)]
+      .flatMap(([, selectors]) => selectors.split(","))
+      .map((selector) => selector.trim()),
+  );
+
+  assert.ok(neutralizedSelectors.has(".btn:hover"), ".btn:hover should not transform");
+  assert.ok(neutralizedSelectors.has(".btn:active"), ".btn:active should not transform");
 });
