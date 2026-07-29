@@ -1,6 +1,6 @@
 "use client";
 
-import { RiArrowRightLine, RiLinkedinBoxFill, RiMailLine } from "react-icons/ri";
+import { RiArrowRightLine, RiDownloadLine, RiLinkedinBoxFill, RiMailLine } from "react-icons/ri";
 
 export default function Hero() {
   const scrollToProjects = (event: React.MouseEvent<HTMLAnchorElement>) => {
@@ -22,15 +22,23 @@ export default function Hero() {
             I&apos;m Thanh Trần, a product and technology leader with 14+ years in software and 7+ years as a Product Owner, Product Manager, and Project Manager. I lead cross-functional Agile teams across smart mobility, payments, and enterprise platforms—from discovery through delivery.
           </p>
           <div className="hero-actions">
-            <a id="cta-view-projects" className="btn btn--primary" href="#projects" onClick={scrollToProjects}>
-              View product work <RiArrowRightLine aria-hidden="true" />
+            <a
+              id="cta-download-cv"
+              className="btn btn--primary"
+              href="/Resume.pdf"
+              download="Thanh_Tran_Senior_Product_Owner_Product_Manager_CV.pdf"
+            >
+              <RiDownloadLine aria-hidden="true" /> Download CV
             </a>
-            <a id="cta-contact" className="btn btn--secondary" href="mailto:thanhtdfu@gmail.com">
-              <RiMailLine aria-hidden="true" /> Contact Thanh
+            <a id="cta-view-projects" className="btn btn--secondary" href="#projects" onClick={scrollToProjects}>
+              View product work <RiArrowRightLine aria-hidden="true" />
             </a>
           </div>
           <div className="hero-note">
             <span>Engineering-to-product career</span>
+            <a href="mailto:thanhtdfu@gmail.com">
+              <RiMailLine aria-hidden="true" /> Email Thanh
+            </a>
             <a href="https://www.linkedin.com/in/thanh-tr%E1%BA%A7n-5815a0112/" target="_blank" rel="noopener noreferrer">
               <RiLinkedinBoxFill aria-hidden="true" /> LinkedIn profile
             </a>
