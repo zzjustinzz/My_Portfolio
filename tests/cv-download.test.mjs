@@ -37,3 +37,29 @@ test("hero promotes the CV download and keeps contact paths compact", async () =
   assert.match(heroNote, /LinkedIn profile/);
   assert.doesNotMatch(hero, /id="cta-contact"/);
 });
+
+test("Navi exposes the same CV as a persistent responsive resource", async () => {
+  const chatbot = await readFile(path.join(root, "components", "chatbot.tsx"), "utf8");
+  const styles = await readFile(path.join(root, "app", "globals.css"), "utf8");
+
+  const resource = chatbot.match(/<a\s+className="chat-resource"[\s\S]*?<\/a>/)?.[0];
+  assert.ok(resource, "chatbot CV resource should be present");
+  assert.match(resource, /href="\/Resume\.pdf"/);
+  assert.match(resource, new RegExp(`download="${downloadName.replaceAll(".", "\\.")}"`));
+  assert.match(resource, /RiDownloadLine/);
+  assert.match(resource, /Download Thanh&apos;s CV/);
+  assert.match(resource, /PDF · 2 pages/);
+  assert.ok(
+    chatbot.indexOf('className="chat-resource"') < chatbot.indexOf('className="chat-messages"'),
+    "resource row should appear before messages",
+  );
+
+  assert.match(styles, /\.chat-resource\s*\{[^}]*display:\s*flex/);
+  assert.match(styles, /\.chat-resource\s*\{[^}]*white-space:\s*nowrap/);
+  assert.match(styles, /\.chat-resource-label\s*\{[^}]*min-width:\s*0/);
+  assert.match(styles, /\.chat-resource-meta\s*\{[^}]*flex:\s*0\s+0\s+auto/);
+  assert.match(styles, /\.chat-resource:active\s*\{[^}]*transform:\s*translateY\(1px\)/);
+  assert.match(styles, /@media \(hover: hover\)[\s\S]*\.chat-resource:hover/);
+  assert.match(styles, /@media \(max-width: 39\.99rem\)[\s\S]*\.chat-resource/);
+  assert.match(styles, /@media \(prefers-reduced-motion: reduce\)[\s\S]*\.chat-resource:active\s*\{[^}]*transform:\s*none/);
+});

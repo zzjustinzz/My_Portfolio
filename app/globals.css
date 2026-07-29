@@ -272,6 +272,11 @@ button:active { transform: translateY(1px); }
 .chat-head p:last-child { color: var(--color-graphite-muted); font-size: var(--text-xs); }
 .chat-head-links { display: flex; gap: var(--space-xs); }
 .chat-head-links a, .chat-head-links button { width: 40px; height: 40px; display: grid; place-items: center; border: 1px solid var(--color-rule-2); border-radius: var(--radius-control); background: transparent; color: inherit; }
+.chat-resource { min-height: 48px; display: flex; align-items: center; justify-content: space-between; gap: var(--space-md); padding: var(--space-sm) var(--space-md); border-bottom: 1px solid var(--color-rule); background: var(--color-paper-2); color: var(--color-ink); white-space: nowrap; transition: background-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out), transform var(--dur-micro) var(--ease-out); }
+.chat-resource-label { min-width: 0; display: inline-flex; align-items: center; gap: var(--space-xs); font-weight: 650; }
+.chat-resource-label svg { flex: 0 0 auto; color: var(--color-accent); }
+.chat-resource-meta { flex: 0 0 auto; color: var(--color-muted); font-family: var(--font-mono); font-size: var(--text-xs); }
+.chat-resource:active { transform: translateY(1px); }
 .chat-messages { flex: 1; overflow: auto; display: flex; flex-direction: column; gap: var(--space-sm); padding: var(--space-md); }
 .chat-message { display: flex; gap: var(--space-xs); }
 .chat-message.is-user { justify-content: flex-end; }
@@ -299,6 +304,7 @@ button:active { transform: translateY(1px); }
   .project-card:hover { border-color: var(--color-accent); transform: translateY(-2px); }
   .field input:hover, .field textarea:hover, .chat-input:hover { background: var(--color-paper-2); }
   .chat-suggestion:hover { border-color: var(--color-accent); color: var(--color-accent); }
+  .chat-resource:hover { background: var(--color-accent-soft); color: var(--color-accent-strong); }
 }
 
 .nav-link:active, .contact-link:active, .project-link:active, .chat-suggestion:active, .command-item:active, .mobile-menu a:active { transform: translateY(1px); }
@@ -345,6 +351,7 @@ button:active { transform: translateY(1px); }
   .chat-hint { display: none; }
   .chat-launcher-wrap { inset: auto var(--space-md) var(--space-md) auto; }
   .chat-window { inset: var(--space-md); width: auto; height: auto; }
+  .chat-resource { gap: var(--space-sm); }
   .chat-foot { display: none; }
   .command-layer { padding: 0; }
   .command-panel { width: 100%; max-height: 100svh; min-height: 100svh; border-radius: 0; }
@@ -410,6 +417,7 @@ button:active { transform: translateY(1px); }
   .hero-copy, .system-map { animation: none !important; }
   .map-line { stroke-dashoffset: 0; }
   .case-thumb:hover { transform: none; }
+  .chat-resource:active { transform: none; }
   .case-strip { scroll-behavior: auto; }
   ::view-transition-old(root), ::view-transition-new(root) { animation: none !important; }
 }

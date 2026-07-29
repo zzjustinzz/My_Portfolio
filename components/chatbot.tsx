@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { RiCloseLine, RiLinkedinBoxFill, RiLoader4Line, RiMailLine, RiRobot2Line, RiSendPlaneLine } from "react-icons/ri";
+import { RiCloseLine, RiDownloadLine, RiLinkedinBoxFill, RiLoader4Line, RiMailLine, RiRobot2Line, RiSendPlaneLine } from "react-icons/ri";
 
 interface Message { role: "user" | "assistant"; content: string; }
 
@@ -123,6 +123,18 @@ export default function Chatbot() {
                 <button type="button" onClick={() => setOpen(false)} aria-label="Close portfolio assistant"><RiCloseLine aria-hidden="true" /></button>
               </div>
             </header>
+
+            <a
+              className="chat-resource"
+              href="/Resume.pdf"
+              download="Thanh_Tran_Senior_Product_Owner_Product_Manager_CV.pdf"
+            >
+              <span className="chat-resource-label">
+                <RiDownloadLine aria-hidden="true" />
+                <span>Download Thanh&apos;s CV</span>
+              </span>
+              <span className="chat-resource-meta">PDF · 2 pages</span>
+            </a>
 
             <div className="chat-messages" aria-live="polite">
               {messages.map((message, index) => (
