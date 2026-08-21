@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     "Digital Payments",
     "Thanh Tran",
   ],
-  authors: [{ name: "Thanh Trần", url: "https://www.linkedin.com/in/thanh-tr%E1%BA%A7n-5815a0112/" }],
+  authors: [{ name: "Thanh Trần", url: "https://www.linkedin.com/in/duc-thanh-tran-5815a0112/" }],
   creator: "Thanh Trần",
   openGraph: {
     type: "website",

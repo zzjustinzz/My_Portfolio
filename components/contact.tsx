@@ -92,7 +92,7 @@ export default function Contact() {
           <div className="contact-list">
             <a className="contact-link" id="contact-mailto" href="mailto:thanhtdfu@gmail.com"><RiMailLine aria-hidden="true" /><span>thanhtdfu@gmail.com</span></a>
             <a className="contact-link" id="contact-phone" href="tel:+84933848491"><RiPhoneLine aria-hidden="true" /><span>+84 933 848 491</span></a>
-            <a className="contact-link" id="contact-linkedin" href="https://www.linkedin.com/in/thanh-tr%E1%BA%A7n-5815a0112/" target="_blank" rel="noopener noreferrer"><RiLinkedinBoxFill aria-hidden="true" /><span>LinkedIn profile</span></a>
+            <a className="contact-link" id="contact-linkedin" href="https://www.linkedin.com/in/duc-thanh-tran-5815a0112/" target="_blank" rel="noopener noreferrer"><RiLinkedinBoxFill aria-hidden="true" /><span>LinkedIn profile</span></a>
           </div>
 
           <p className="contact-location"><RiMapPinLine aria-hidden="true" /> Ho Chi Minh City, Vietnam</p>

@@ -118,7 +118,7 @@ export default function Chatbot() {
                 <div><p>Navi · Portfolio assistant</p><p>Answers from Thanh’s portfolio</p></div>
               </div>
               <div className="chat-head-links">
-                <a href="https://www.linkedin.com/in/thanh-tr%E1%BA%A7n-5815a0112/" target="_blank" rel="noopener noreferrer" aria-label="Open Thanh’s LinkedIn"><RiLinkedinBoxFill aria-hidden="true" /></a>
+                <a href="https://www.linkedin.com/in/duc-thanh-tran-5815a0112/" target="_blank" rel="noopener noreferrer" aria-label="Open Thanh’s LinkedIn"><RiLinkedinBoxFill aria-hidden="true" /></a>
                 <a href="mailto:thanhtdfu@gmail.com" aria-label="Email Thanh"><RiMailLine aria-hidden="true" /></a>
                 <button type="button" onClick={() => setOpen(false)} aria-label="Close portfolio assistant"><RiCloseLine aria-hidden="true" /></button>
               </div>
@@ -188,7 +188,7 @@ export default function Chatbot() {
             <footer className="chat-foot">
               <span>Connect with Thanh</span>
               <span className="chat-foot-links">
-                <a href="https://www.linkedin.com/in/thanh-tr%E1%BA%A7n-5815a0112/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://www.linkedin.com/in/duc-thanh-tran-5815a0112/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                 <span aria-hidden="true">·</span>
                 <a href="mailto:thanhtdfu@gmail.com">Email</a>
               </span>

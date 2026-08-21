@@ -42,12 +42,13 @@ export const projectsData: Project[] = [
     metrics: ["90%+ cashless payments", "6+ payment partners integrated", "Requirements → go-live ownership"],
     tags: ["AFC", "EMV", "QR", "VNeID", "Biometric", "Payment Integration"],
     images: [
+      { src: "/cases/maas-award-2025.jpg", caption: "Alui Parus 2025 — Most Impressive New Product", kind: "shot" },
       { src: "/cases/maas-iso-devices-figma.png", caption: "AFC ecosystem — metro, bus, QR, EMV & contactless validators", kind: "wide" },
       { src: "/cases/tap-napas.jpg", caption: "Tap-and-go with a NAPAS bank card at the fare gate", kind: "wide" },
       { src: "/cases/gate-pay2.jpg", caption: "Scanning a QR-code ticket to pass the fare gate", kind: "wide" },
       { src: "/cases/afc-gatectrl.jpg", caption: "Automatic fare-collection gate line at a Metro station", kind: "wide" },
     ],
-    imageSource: "maas.paas.io.vn · Thanh Niên · Chính Phủ · Phong Vũ",
+    imageSource: "maas.paas.io.vn · Thanh Niên · Chính Phủ · Phong Vũ · personal archive",
     liveUrl: "https://maas.paas.io.vn/",
   },
   {
@@ -100,14 +101,28 @@ export const projectsData: Project[] = [
     metrics: ["1M+ downloads", "Citywide traffic coverage", "Centralized operational data"],
     tags: ["Product Strategy", "Smart City", "Real-time Data", "Public Sector", "Scrum"],
     images: [
+      { src: "/cases/ttgt-award-2019.jpg", caption: "Alui Parus 2019 — Product of the Year", kind: "shot" },
       { src: "/cases/ttgt-ui-map.jpg", caption: "Current app — citywide live-camera map (2025)", kind: "shot" },
       { src: "/cases/ttgt-ui-nearby.jpg", caption: "Current app — live cameras within a 5 km radius", kind: "shot" },
       { src: "/cases/ttgt-3.png", caption: "Live traffic camera feed over a congestion map", kind: "shot" },
       { src: "/cases/ttgt-5.png", caption: "Location detail — incident alert & live camera", kind: "shot" },
     ],
-    imageSource: "Apple App Store · Tuổi Trẻ",
+    imageSource: "Apple App Store · Tuổi Trẻ · personal archive",
     appStoreUrl: "https://apps.apple.com/vn/app/ttgt-tp-h%E1%BB%93-ch%C3%AD-minh/id1193052114",
     playStoreUrl: "https://play.google.com/store/apps/details?id=com.fts.notis",
+  },
+  {
+    title: "NeoVS — Virtual Office for a Company Working From Home",
+    role: "Product Owner",
+    dateRange: "2021",
+    description:
+      "Built NeoVS, a virtual-office application rolled out company-wide during the Covid-19 pandemic, giving teams a shared workspace to meet, collaborate, and stay present with each other while physical offices were closed.",
+    metrics: ["100+ FPT IS employees on the platform", "Company-wide rollout during Covid-19", "iKhien 2021 — Bronze Award"],
+    tags: ["Internal Product", "Remote Work", "Virtual Office", "Covid-19 Response", "Innovation Award"],
+    images: [
+      { src: "/cases/neovs-award-2021.jpg", caption: "iKhien 2021 — Bronze Award for NeoVS", kind: "shot" },
+    ],
+    imageSource: "Personal archive",
   },
   {
     title: "Enterprise & Smart Township Platforms",

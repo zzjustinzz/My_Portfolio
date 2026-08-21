@@ -13,13 +13,14 @@ Current role: Product Manager and Deputy Head of Metro Solutions Department at F
 Positioning: Product and technology leader with 14+ years in software and 7+ years as a Product Owner, Product Manager, and Project Manager, with a software engineering foundation, focused on user-centered digital products that scale across smart mobility, payments, enterprise, and public-sector ecosystems.
 Email: thanhtdfu@gmail.com
 Phone: +84 933 848 491
-LinkedIn: linkedin.com/in/thanh-tran-5815a0112 (the displayed URL may include Vietnamese diacritics)
+LinkedIn: linkedin.com/in/duc-thanh-tran-5815a0112
 
 SELECTED PRODUCT WORK
 - FPT.Maas: smart ticketing for modern public transportation on HCMC Metro. Led the digital product and payment-integration workstreams; integrated 6+ payment partners (MoMo, ZaloPay, ShopeePay, Vietcombank, Techcombank, Visa, Mastercard) in an ecosystem where 90%+ of passengers pay cashless. Reference: maas.paas.io.vn.
 - TTGT: real-time traffic intelligence for HCMC residents, surpassing 1M downloads.
 - Go!Bus: multimodal journey planning; Zalo Mini App reached 245,000+ users and 261,000+ visits within 40 days.
 - HCMC Metro HURC app: helped the product exceed 500,000 downloads.
+- NeoVS: virtual-office application rolled out company-wide during the Covid-19 pandemic so teams could meet and collaborate while offices were closed. Won the Bronze Award at FPT's iKhien 2021 innovation program.
 - Enterprise: AJINOMOTO Voice of Customer platform; Smart Township for NOVA Group and Mapletree.
 
 EXPERIENCE

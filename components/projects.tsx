@@ -12,7 +12,7 @@ export default function Projects() {
           <div className="accent-line" aria-hidden="true" />
           <h2 className="section-title">Product work in operating context.</h2>
           <p className="section-lede">Smart mobility, Metro payments, public services, and enterprise platforms—shown as systems, stakeholders, and delivery outcomes.</p>
-          <a className="project-link" id="projects-linkedin" href="https://www.linkedin.com/in/thanh-tr%E1%BA%A7n-5815a0112/" target="_blank" rel="noopener noreferrer">
+          <a className="project-link" id="projects-linkedin" href="https://www.linkedin.com/in/duc-thanh-tran-5815a0112/" target="_blank" rel="noopener noreferrer">
             Full profile <RiArrowRightUpLine aria-hidden="true" />
           </a>
         </header>
