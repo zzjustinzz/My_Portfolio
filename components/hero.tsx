@@ -39,7 +39,7 @@ export default function Hero() {
             <a href="mailto:thanhtdfu@gmail.com">
               <RiMailLine aria-hidden="true" /> Email Thanh
             </a>
-            <a href="https://www.linkedin.com/in/thanh-tr%E1%BA%A7n-5815a0112/" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/duc-thanh-tran-5815a0112/" target="_blank" rel="noopener noreferrer">
               <RiLinkedinBoxFill aria-hidden="true" /> LinkedIn profile
             </a>
           </div>
